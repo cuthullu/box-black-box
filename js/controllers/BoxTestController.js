@@ -42,6 +42,7 @@
             vm.testCases.push(test);
         }
 
+
         var box1 = new Box(0,0,4,4)
         var box2 = new Box(1,1,4,4)
         vm.testCases.push(new TestCase(box1,box2))
@@ -75,6 +76,17 @@
         var testCase = new TestCase(box1,box2);
         testCase.expected = false;
         vm.testCases.push(testCase);
+
+        box1 = new Box(2,2,2,2)
+        box2 = new Box(2,2,2,2)
+        var testCase = new TestCase(box1,box2);
+        vm.testCases.push(testCase);
+
+        box1 = new Box(2,2,2,2)
+        box2 = new Box(1,1,3,3)
+        var testCase = new TestCase(box1,box2);
+        vm.testCases.push(testCase);
+
 
     }
 

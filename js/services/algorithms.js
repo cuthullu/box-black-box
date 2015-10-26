@@ -11,9 +11,9 @@
         algorithms.push({"name": "c", "run" : c });
         algorithms.push({"name": "d", "run" : d });
         algorithms.push({"name": "e", "run" : e });
-        // algorithms.push({"name": "f", "run" : f });
-        // algorithms.push({"name": "g", "run" : g });
-        // algorithms.push({"name": "h", "run" : h });
+        algorithms.push({"name": "f", "run" : f });
+        algorithms.push({"name": "g", "run" : g });
+        algorithms.push({"name": "h", "run" : h });
         algorithms.push({"name": "i", "run" : i });
         // algorithms.push({"name": "j", "run" : j });
 
@@ -49,10 +49,10 @@
 
         //correct answer without reversing
         function b(box1, box2) {
-            if(box1.x < (box2.x + box2.width) &&
-                (box1.x + box1.width) > box2.x  &&
-                box1.y < (box2.y + box2.height) &&
-                (box1.y + box1.height) > box2.y ){
+            if((box1.x < (box2.x + box2.width) &&
+                (box1.x + box1.width) > box2.x ) ||
+                (box1.y < (box2.y + box2.height) &&
+                (box1.y + box1.height) > box2.y )){
 
                 return true;
             }
@@ -90,18 +90,47 @@
 
         //correct answer but out by one errors?  Is there an ‘out-by-one’ error available without duplicating ‘e’?
         function f(box1, box2) {
+            box2 = {
+                "x" : box2.x -1 ,
+                "y" : box2.y - 1,
+                "width" : box1.width,
+                "height" : box1.height,
+            }
+            if(box1.x < (box2.x + box2.width) &&
+                (box1.x + box1.width) > box2.x  &&
+                box1.y < (box2.y + box2.height) &&
+                (box1.y + box1.height) > box2.y ){
 
+                return true;
+            }
+            return false;
         }
 
 
-        //
+        //any vertex inside the area of the opposite rectangle is an overlap, and nothing else is
+        //only plus sign and identical rectangles fail
         function g(box1, box2) {
+            if(box1.x < (box2.x + box2.width) &&
+                box1.x > box2.x  &&
+                box1.y < (box2.y + box2.height) &&
+                box1.y  > box2.y ){
 
+                return true;
+            }
+            return false;
         }
 
-        //
+        // any vertex of B inside rectangle A
+        //plus sign, identical rectangles and B bigger than A fail
         function h(box1, box2) {
+            if((box2.x < (box1.x + box1.width) &&
+                box2.x > box1.x  ) ||
+                (box2.y < (box1.y + box1.height) &&
+                box2.y  > box1.y )){
 
+                return true;
+            }
+            return false;
         }
 
         //
