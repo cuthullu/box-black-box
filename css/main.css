@@ -1,3 +1,29 @@
 .result-thing {
     margin-left: 5px;
 }
+
+md-input-container {
+    padding: 2px 2px 2px;
+    width: 100px;
+}
+.test-case {
+    border-bottom-color: #989898;
+    border-bottom-style: solid;
+    border-bottom-width: initial;
+}
+
+.result-thing.my-primary {
+    color: green;
+}
+.result-thing.my-warn {
+    color: red;
+}
+
+.box-conf {
+    padding-right: 30px;
+}
+
+.brief {
+    color: black;
+    font-size: 15px;
+}

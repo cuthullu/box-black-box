@@ -24,6 +24,10 @@
             vm.testCases.forEach(runTestSuit);
         }
 
+        vm.delete = function(test) {
+            vm.testCases.splice(vm.testCases.indexOf(test), 1);
+        }
+
         vm.plusTest = newTest;
         function runTestSuit(testCase) {
             testCase.results = [];
@@ -36,56 +40,58 @@
         }
 
         function newTest() {
-            var box1 = new Box(0, 0, 0, 0);
-            var box2 = new Box(0, 0, 0, 0);
+            var box1 = new Box(0, 0, 1, 1);
+            var box2 = new Box(3, 3, 1, 1);
             var test = new TestCase(box1, box2);
             vm.testCases.push(test);
         }
+        newTest();
 
 
-        var box1 = new Box(0,0,4,4)
-        var box2 = new Box(1,1,4,4)
-        vm.testCases.push(new TestCase(box1,box2))
-
-        box2 = new Box(0,0,4,4)
-        box1 = new Box(1,1,4,4)
-        vm.testCases.push(new TestCase(box1,box2))
-
-        box1 = new Box(2,0,2,4)
-        box2 = new Box(1,1,4,2)
-        vm.testCases.push(new TestCase(box1,box2))
-
-        box2 = new Box(2,0,2,4)
-        box1 = new Box(1,1,4,2)
-        vm.testCases.push(new TestCase(box1,box2))
-
-        box1 = new Box(0,0,2,2)
-        box2 = new Box(1,3,2,2)
-        var testCase = new TestCase(box1,box2);
-        testCase.expected = false;
-        vm.testCases.push(testCase);
-
-        box1 = new Box(0,0,2,2)
-        box2 = new Box(3,1,2,2)
-        var testCase = new TestCase(box1,box2);
-        testCase.expected = false;
-        vm.testCases.push(testCase);
-
-        box1 = new Box(0,0,2,2)
-        box2 = new Box(2,2,2,2)
-        var testCase = new TestCase(box1,box2);
-        testCase.expected = false;
-        vm.testCases.push(testCase);
-
-        box1 = new Box(2,2,2,2)
-        box2 = new Box(2,2,2,2)
-        var testCase = new TestCase(box1,box2);
-        vm.testCases.push(testCase);
-
-        box1 = new Box(2,2,2,2)
-        box2 = new Box(1,1,3,3)
-        var testCase = new TestCase(box1,box2);
-        vm.testCases.push(testCase);
+        //
+        // var box1 = new Box(0,0,4,4)
+        // var box2 = new Box(1,1,4,4)
+        // vm.testCases.push(new TestCase(box1,box2))
+        //
+        // box2 = new Box(0,0,4,4)
+        // box1 = new Box(1,1,4,4)
+        // vm.testCases.push(new TestCase(box1,box2))
+        //
+        // box1 = new Box(2,0,2,4)
+        // box2 = new Box(1,1,4,2)
+        // vm.testCases.push(new TestCase(box1,box2))
+        //
+        // box2 = new Box(2,0,2,4)
+        // box1 = new Box(1,1,4,2)
+        // vm.testCases.push(new TestCase(box1,box2))
+        //
+        // box1 = new Box(0,0,2,2)
+        // box2 = new Box(1,3,2,2)
+        // var testCase = new TestCase(box1,box2);
+        // testCase.expected = false;
+        // vm.testCases.push(testCase);
+        //
+        // box1 = new Box(0,0,2,2)
+        // box2 = new Box(3,1,2,2)
+        // var testCase = new TestCase(box1,box2);
+        // testCase.expected = false;
+        // vm.testCases.push(testCase);
+        //
+        // box1 = new Box(0,0,2,2)
+        // box2 = new Box(2,2,2,2)
+        // var testCase = new TestCase(box1,box2);
+        // testCase.expected = false;
+        // vm.testCases.push(testCase);
+        //
+        // box1 = new Box(2,2,2,2)
+        // box2 = new Box(2,2,2,2)
+        // var testCase = new TestCase(box1,box2);
+        // vm.testCases.push(testCase);
+        //
+        // box1 = new Box(2,2,2,2)
+        // box2 = new Box(1,1,3,3)
+        // var testCase = new TestCase(box1,box2);
+        // vm.testCases.push(testCase);
 
 
     }
