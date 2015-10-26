@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BoxBlackBox">
+<head>
+    <meta charset="utf-8">
+    <title>TODO List</title>
+    <!--<link href="css/bootstrap.css" rel="stylesheet" type="text/css">-->
+    <link rel="icon" type="image/ico" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body ng-controller="BoxTestController as vm" ng-module="BoxBlackBox" >
+<md-toolbar layout-padding>
+    <h2 class="md-display-1">
+        Rectangle Black Box Test Suit going online 2k15
+    </h2>
+</md-toolbar>
+<md-content layout="column" layout-padding layout-fill>
+
+<br />
+<br />
+<br />
+<div ng-repeat="test in vm.testCases" layout="row" layout-padding>
+    <div class="box-def" layout="column">
+        <label>Box 1</label>
+        <div layout-padding  layout="row">
+            <md-input-container>
+                <label>X Coordinate</label>
+                <input ng-model="test.box1.x" type="number" step="0.1">
+            </md-input-container>
+            <md-input-container>
+                <label>Y Coordinate</label>
+                <input ng-model="test.box1.y" type="number" step="0.1">
+            </md-input-container>
+            <md-input-container>
+                <label>Width</label>
+                <input ng-model="test.box1.width" type="number" step="0.1">
+            </md-input-container>
+            <md-input-container>
+                <label>Height</label>
+                <input ng-model="test.box1.height" type="number" step="0.1">
+            </md-input-container>
+        </div>
+
+        <label>Box 2</label>
+        <div layout-padding class="autoScroll" layout="row">
+            <md-input-container>
+                <label>X Coordinate</label>
+                <input ng-model="test.box2.x" type="number" step="0.1">
+            </md-input-container>
+            <md-input-container>
+                <label>Y Coordinate</label>
+                <input ng-model="test.box2.y" type="number" step="0.1">
+            </md-input-container>
+            <md-input-container>
+                <label>Width</label>
+                <input ng-model="test.box2.width" type="number" step="0.1">
+            </md-input-container>
+            <md-input-container>
+                <label>Height</label>
+                <input ng-model="test.box2.height" type="number" step="0.1">
+            </md-input-container>
+        </div>
+        <md-switch ng-model="test.expected" aria-label="Switch 2" class="md-warn">
+            Expected Result: {{ test.expected }}
+        </md-switch>
+    </div>
+    <div class="test-results" layout="row" layout-align="center center" flex>
+        <span ng-repeat="result in test.results track by $index" layout="row" flex>
+            <div ng-if="result.outCome === test.expected" flex class="result-thing my-primary">
+                 <strong>Pass</strong>
+                 <em>({{result.algorithm}})</em>
+             </div>
+            <div ng-if="result.outCome !== test.expected" flex class="result-thing  my-warn">
+                <strong>Fail</strong>
+                <em>({{result.algorithm}})</em>
+            </div>
+        </span>
+    </div>
+</div>
+<md-content layout="row" layout-padding>
+    <md-button class="md-pimary md-raised" ng-click="vm.runTests()">Run</md-button>
+    <md-button class="md-accent md-raised" ng-click="vm.plusTest()">Plus</md-button>
+</md-content>
+<!--External Modules-->
+<!--<script src="js/vendor/bootstrap.min.js"></script>-->
+
+
+<!-- Angular Material Dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.9.4/angular-material.min.js"></script>
+
+<!-- Modules -->
+<script src="js/app.js"></script>
+
+<!-- Controllers -->
+<script src="js/controllers/BoxTestController.js"></script>
+
+<!-- Services -->
+<script src="js/services/algorithms.js"></script>
+
+</md-content>
+</body>
+</html>
