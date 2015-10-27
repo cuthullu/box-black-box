@@ -7,7 +7,7 @@
         var algorithms = [];
 
         algorithms.push({"name": "a", "run" : a });
-        // algorithms.push({"name": "b", "run" : b });
+        algorithms.push({"name": "b", "run" : b });
         algorithms.push({"name": "c", "run" : c });
         algorithms.push({"name": "d", "run" : d });
         algorithms.push({"name": "e", "run" : e });
@@ -15,7 +15,8 @@
         algorithms.push({"name": "g", "run" : g });
         algorithms.push({"name": "h", "run" : h });
         algorithms.push({"name": "i", "run" : i });
-        // algorithms.push({"name": "j", "run" : j });
+        algorithms.push({"name": "j", "run" : j });
+        algorithms.push({"name": "k", "run" : k });
 
         return service;
 
@@ -35,10 +36,10 @@
         //fine for everything except the plus sign
         function a(box1, box2) {
             return doBothWays(box1, box2, function(box1, box2) {
-                if(((box1.x >= box2.x && box1.y >= box2.y) &&
-                    (box1.x < (box2.x + box2.height) && box1.y < (box2.y + box2.width))) ||
-                    ((box1.x >= box2.x && box1.y + box1.width <= box2.y + box1.width) &&
-                    (box1.x < (box2.x + box2.height) && box1.y + box1.width < box2.y))) {
+                if(((box1.y >= box2.y && box1.x >= box2.x) &&
+                    (box1.y < (box2.y + box2.height) && box1.x < (box2.x + box2.width) )) ||
+                    ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box1.width) &&
+                    (box1.y < (box2.y + box2.height) && box1.x + box1.width < box2.x))) {
 
                     return true;
                 }
@@ -49,10 +50,13 @@
 
         //correct answer without reversing
         function b(box1, box2) {
-            if((box1.x < (box2.x + box2.width) &&
-                (box1.x + box1.width) > box2.x ) ||
-                (box1.y < (box2.y + box2.height) &&
-                (box1.y + box1.height) > box2.y )){
+            if(((box1.y >= box2.y && box1.x >= box2.x) &&
+                (box1.y < (box2.y + box2.height) && box1.x < (box2.x + box2.width) )) ||
+                ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box1.width) &&
+                (box1.y < (box2.y + box2.height) && box1.x + box1.width < box2.x)) ||
+                ((box1.y < box2.y && box1.x > box2.x ) &&
+                ((box1.y + box1.height) > (box2.y + box2.height) &&
+                (box1.x + box1.width) < (box2.x + box2.width)))) {
 
                 return true;
             }
@@ -133,7 +137,7 @@
             return false;
         }
 
-        //
+        //My Way
         function i(box1, box2) {
             if(box1.x < (box2.x + box2.width) &&
                 (box1.x + box1.width) > box2.x  &&
@@ -145,9 +149,33 @@
             return false;
         }
 
-        //
+        //The highway
         function j(box1, box2) {
+            return doBothWays(box1, box2, function(box1, box2) {
+                if(((box1.y >= box2.y && box1.x >= box2.x) &&
+                    (box1.y < (box2.y + box2.height) && box1.x < (box2.x + box2.width) )) ||
+                    ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box1.width) &&
+                    (box1.y < (box2.y + box2.height) && box1.x + box1.width < box2.x)) ||
+                    ((box1.y < box2.y && box1.x > box2.x ) &&
+                    ((box1.y + box1.height) > (box2.y + box2.height) &&
+                    (box1.x + box1.width) < (box2.x + box2.width)))) {
 
+                    return true;
+                }
+                return false;
+            })
+        }
+
+        //My Way
+        function k(box1, box2) {
+            if(box1.x < (box2.x + box2.height) &&
+                (box1.x + box1.height) > box2.x  &&
+                box1.y < (box2.y + box2.width) &&
+                (box1.y + box1.width) > box2.y ){
+
+                return true;
+            }
+            return false;
         }
 
     }
