@@ -15,30 +15,28 @@
 </head>
 
 <body ng-controller="BoxTestController as vm" ng-module="BoxBlackBox" >
-<md-toolbar layout-padding layout="row">
-    <h2 class="md-display-1">
+<md-toolbar layout-padding layout="row" class="main-">
+    <h5 class="md-display-1">
         Rectangle Black Box Test Suit
-    </h2>
+    </h5>
     <span flex></span>
-    <div layout="column">
+    <div class="brief">
         <p class="brief">
             <span class="sub-heading"> Rectangle : </span>
             <br />
-            a point with non-negative integral co-ordinates x, y, with non-negative, non-zero integral width and height.
+            <span class="discription"><em>a point with non-negative integral co-ordinates x, y, with non-negative, non-zero integral width and height.</em><span>
+        </p>
+    </div>
+    <div class="brief">
         <p class="brief">
             <span class="sub-heading"> Function Definition: </span>
             <br />
-            true if and only if there is a non-zero area of overlap.
+            <span class="discription"><em>true if and only if there is a non-zero area of overlap.</em><span>
         </p>
     </div>
 
 </md-toolbar>
 <md-content layout="column" layout-padding layout-fill>
-
-
-<br />
-<br />
-<br />
 <div ng-repeat="test in vm.testCases" layout="row" layout-padding class="test-case">
     <div layout="column" layout-padding class="box-conf">
         Expected Result

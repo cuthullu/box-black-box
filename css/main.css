@@ -23,7 +23,20 @@ md-input-container {
     padding-right: 30px;
 }
 
-.brief {
+.brief .discription {
     color: black;
     font-size: 15px;
+}
+
+.main-toolbar {
+    height: 115px;
+}
+
+.md-display-1 {
+    line-height: 1px;
+}
+
+div.brief {
+    width: 200px;
+    margin-right: 20px;
 }
