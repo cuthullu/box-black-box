@@ -38,8 +38,8 @@
             return doBothWays(box1, box2, function(box1, box2) {
                 if(((box1.y >= box2.y && box1.x >= box2.x) &&
                     (box1.y < (box2.y + box2.height) && box1.x < (box2.x + box2.width) )) ||
-                    ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box1.width) &&
-                    (box1.y < (box2.y + box2.height) && box1.x + box1.width < box2.x))) {
+                    ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box2.width) &&
+                    (box1.y < (box2.y + box2.height) && box1.x + box1.width > box2.x))) {
 
                     return true;
                 }
@@ -149,13 +149,13 @@
             return false;
         }
 
-        //The highway
+        //The highway 
         function j(box1, box2) {
             return doBothWays(box1, box2, function(box1, box2) {
                 if(((box1.y >= box2.y && box1.x >= box2.x) &&
                     (box1.y < (box2.y + box2.height) && box1.x < (box2.x + box2.width) )) ||
-                    ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box1.width) &&
-                    (box1.y < (box2.y + box2.height) && box1.x + box1.width < box2.x)) ||
+                    ((box1.y >= box2.y && box1.x + box1.width <= box2.x + box2.width) &&
+                    (box1.y < (box2.y + box2.height) && box1.x + box1.width > box2.x)) ||
                     ((box1.y < box2.y && box1.x > box2.x ) &&
                     ((box1.y + box1.height) > (box2.y + box2.height) &&
                     (box1.x + box1.width) < (box2.x + box2.width)))) {
@@ -166,7 +166,7 @@
             })
         }
 
-        //My Way
+        //Mixed up x/y width/height
         function k(box1, box2) {
             if(box1.x < (box2.x + box2.height) &&
                 (box1.x + box1.height) > box2.x  &&
