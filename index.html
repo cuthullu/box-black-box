@@ -102,6 +102,9 @@
             </md-input-container>
         </div>
     </div>
+    <div class="errors" layout-align="center center">
+        <p>{{test.errors}}</p>
+    </div>
     <div class="test-results" layout="row" layout-align="center center" flex>
         <span ng-repeat="result in test.results track by $index" layout="row" flex>
             <div ng-if="result.outCome === test.expected" flex class="result-thing my-primary">
