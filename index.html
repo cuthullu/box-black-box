@@ -17,9 +17,12 @@
 <body ng-controller="BoxTestController as vm" ng-module="BoxBlackBox" layout="row" ng-cloak>
 <div layout="column" role="main" flex>
 <md-toolbar layout-padding layout="row" class="main-toolbar md-tall">
-    <h5 class="md-display-1">
-        Rectangle Black Box Test Suit
-    </h5>
+    <div class="title">
+        <h5 class="md-display-1">
+            Rectangles
+        </h5>
+        <p><em>Black Box Test Suite</em></p>
+    </div>
     <span flex></span>
     <div layout="row" layout-padding>
         <md-button class="md-raised" ng-click="vm.runTests()"><i class="fa fa-play"></i></md-button>
@@ -41,81 +44,112 @@
             <span class="discription"><em>true if and only if there is a non-zero area of overlap.</em></span>
         </p>
     </div>
+    <div class="brief">
+        <p class="brief">
+            <span class="sub-heading"> Goal : </span>
+            <br />
+            <span class="discription"><em>
+                You have {{vm.algorithms.length}} different implementations of a collison detection function.
+                Some better than others.
+                Figure which have bugs and why.
+            </em></span>
+        </p>
+    </div>
 
 </md-toolbar>
-<md-content layout="column" layout-padding>
+<md-toolbar layout="row" class="label-bar md-accent md-hue-1" layout-padding ng-class="{'scrollbar-mitigate' : vm.scrolling}">
+    <span flex="5">Control</span>
+    <span flex="20">Rectangle 1</span>
+    <span flex="20">Rectangle 2</span>
+    <span flex="10">Expected Results</span>
+    <span flex="15">Notes</span>
+    <div class="label-bar" flex="30" layout="row" layout-padding layout-align="center center">
+        <div ng-repeat="alg in vm.algorithms" layout-align="center center" flex>
+        {{alg.name}}
+        </div>
+    </div>
+</md-toolbar>
+<md-content layout="column" id="this-can-scroll">
 <div ng-repeat="test in vm.testCases" layout="row" layout-padding class="test-case">
-    <div layout="column" layout-padding class="box-conf">
-        Expected Result
-        <md-switch ng-model="test.expected" aria-label="Switch 2" class="md-accent">
-            {{ test.expected }}
-        </md-switch>
-        <md-input-container>
-            <label>Notes</label>
-            <input ng-model="test.notes" type="text">
-        </md-input-container>
-        <div>
-       
-        <md-button class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
-            <i class="fa fa-trash"></i>
-        </md-button>
+        <div layout="column" class="box-conf" flex="5">
+            <!-- <div> -->
+                <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTests()"><i class="fa fa-play" aria-label="play"></i></md-button>
+                <md-button class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
+                    <i class="fa fa-trash"></i>
+                </md-button>
+            <!-- </div> -->
         </div>
-    </div>
-    <div class="box-def" layout="column">
-        <label>Box 1</label>
-        <div layout-padding  layout="row">
-            <md-input-container>
-                <label>X Coordinate</label>
-                <input ng-model="test.box1.x" type="number" step="1" min="0">
-            </md-input-container>
-            <md-input-container>
-                <label>Y Coordinate</label>
-                <input ng-model="test.box1.y" type="number" step="1" min="0">
-            </md-input-container>
-            <md-input-container>
-                <label>Width</label>
-                <input ng-model="test.box1.width" type="number" step="1" min="1">
-            </md-input-container>
-            <md-input-container>
-                <label>Height</label>
-                <input ng-model="test.box1.height" type="number" step="1" min="1">
-            </md-input-container>
-        </div>
-
-        <label>Box 2</label>
-        <div layout-padding class="autoScroll" layout="row">
-            <md-input-container>
-                <label>X Coordinate</label>
-                <input ng-model="test.box2.x" type="number" step="1" min="0">
-            </md-input-container>
-            <md-input-container>
-                <label>Y Coordinate</label>
-                <input ng-model="test.box2.y" type="number" step="1" min="0">
-            </md-input-container>
-            <md-input-container>
-                <label>Width</label>
-                <input ng-model="test.box2.width" type="number" step="1" min="1">
-            </md-input-container>
-            <md-input-container>
-                <label>Height</label>
-                <input ng-model="test.box2.height" type="number" step="1" min="1">
-            </md-input-container>
-        </div>
-    </div>
-    <div class="errors" layout-align="center center">
-        <p>{{test.errors}}</p>
-    </div>
-    <div class="test-results" layout="row" layout-align="center center" flex>
-        <span ng-repeat="result in test.results track by $index" layout="row" flex>
-            <div ng-if="result.outCome === test.expected" flex class="result-thing my-primary">
-                 <strong>Pass</strong>
-                 <em>({{result.algorithm}})</em>
-             </div>
-            <div ng-if="result.outCome !== test.expected" flex class="result-thing  my-warn">
-                <strong>Fail</strong>
-                <em>({{result.algorithm}})</em>
+        <div layout="column" flex="20">
+            <div layout-padding  layout="row">
+                <md-input-container class="box-input">
+                    <label>X Coord</label>
+                    <input ng-model="test.box1.x" type="number" step="1" min="0">
+                </md-input-container>
+                <md-input-container class="box-input">
+                    <label>Y Coord</label>
+                    <input ng-model="test.box1.y" type="number" step="1" min="0">
+                </md-input-container>
+                <md-input-container class="box-input">
+                    <label>Width</label>
+                    <input ng-model="test.box1.width" type="number" step="1" min="1">
+                </md-input-container>
+                <md-input-container class="box-input">
+                    <label>Height</label>
+                    <input ng-model="test.box1.height" type="number" step="1" min="1">
+                </md-input-container>
             </div>
-        </span>
+        </div>
+        <div layout="column" flex="20">
+            <div layout-padding class="autoScroll" layout="row">
+                <md-input-container class="box-input">
+                    <label>X Coord</label>
+                    <input ng-model="test.box2.x" type="number" step="1" min="0">
+                </md-input-container>
+                <md-input-container class="box-input">
+                    <label>Y Coord</label>
+                    <input ng-model="test.box2.y" type="number" step="1" min="0">
+                </md-input-container>
+                <md-input-container class="box-input">
+                    <label>Width</label>
+                    <input ng-model="test.box2.width" type="number" step="1" min="1">
+                </md-input-container>
+                <md-input-container class="box-input">
+                    <label>Height</label>
+                    <input ng-model="test.box2.height" type="number" step="1" min="1">
+                </md-input-container>
+            </div>
+        </div>
+        <div layout-padding flex="10">
+            <md-switch ng-model="test.expected" aria-label="Switch 2" class="md-accent">
+                {{ test.expected }}
+            </md-switch>
+        </div>
+        <div layout-padding flex="15">
+            <md-input-container>
+                <label>optional</label>
+                <input ng-model="test.notes" type="text">
+            </md-input-container>
+        </div>
+        <!-- <span flex></span> -->
+    <div class="result" layout="column" flex="30">
+        <div class="errors" layout-align="center center">
+            <p>{{test.errors}}</p>
+        </div>
+        <div class="test-results" layout="row" layout-align="center center">
+            <span ng-repeat="result in test.results track by $index" layout="row" flex>
+                <div ng-if="result.outCome === test.expected" flex class="result-thing my-primary">
+                     <!-- <strong>Pass</strong> -->
+                     <icon class="fa fa-check-square fa-2x"></icon>
+                 </div>
+                <div ng-if="result.outCome !== test.expected" flex class="result-thing  my-warn">
+                    <!-- <strong>Fail</strong> -->
+                    <icon class="fa fa-minus-square fa-2x"></icon>
+                </div>
+                <md-tooltip>
+                {{result.algorithm}}
+            </md-tooltip>
+            </span>
+        </div>
     </div>
 </div>
 <!--External Modules-->

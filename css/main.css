@@ -1,14 +1,10 @@
-.result-thing {
-    margin-left: 5px;
-}
-
-md-input-container {
+.box-input {
     padding: 2px 2px 2px;
-    width: 100px;
+    width: 75px;
 }
 
 md-input-container input {
-    width: 96px;
+    /*width: 96px;*/
 }
 .test-case {
     border-bottom-color: #989898;
@@ -38,6 +34,8 @@ md-input-container input {
 
 .md-display-1 {
     line-height: 1px;
+    margin-top: 29px;
+    margin-bottom: 19px;
 }
 
 div.brief {
@@ -52,4 +50,33 @@ p.brief {
 .full-div{
     width: inherit;
     height: inherit;
+}
+
+.title em{
+    text-indent: 5px;
+}
+
+.scrollbar-mitigate{ 
+    padding-right: 25px;
+}
+
+.label-bar {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    min-height: 30px;
+    height: 33px;
+}
+
+div.label-bar {
+    padding-bottom: 0px;
+    padding-top: 0px; 
+}
+.box-conf button:first-child {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.box-conf button:last-child {
+    margin-top: -13px;
+    margin-left: 34px;
 }

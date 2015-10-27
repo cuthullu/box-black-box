@@ -35,6 +35,7 @@
         var vm = this;
         vm.testCases = [];
         vm.algorithms = algorithmService.getAlgorithms();
+        vm.scrolling = isOverflowed();
 
         vm.runTests = function() {
             vm.testCases.forEach(runTestSuit);
@@ -42,6 +43,7 @@
 
         vm.delete = function(test) {
             vm.testCases.splice(vm.testCases.indexOf(test), 1);
+            vm.scrolling = isOverflowed();
         }
 
         vm.plusTest = newTest;
@@ -67,6 +69,12 @@
             var box2 = new Box(3, 3, 1, 1);
             var test = new TestCase(box1, box2);
             vm.testCases.push(test);
+            vm.scrolling = isOverflowed();
+        }
+
+        function isOverflowed(){
+            var element = document.getElementById("this-can-scroll");
+            return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
         }
         newTest();
 
