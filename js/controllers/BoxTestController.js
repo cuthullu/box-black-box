@@ -47,6 +47,7 @@
         }
 
         vm.plusTest = newTest;
+        vm.runTest = runTestSuit;
 
         function runTestSuit(testCase) {
             testCase.results = [];

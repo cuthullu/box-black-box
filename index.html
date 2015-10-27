@@ -58,11 +58,12 @@
 
 </md-toolbar>
 <md-toolbar layout="row" class="label-bar md-accent md-hue-1" layout-padding ng-class="{'scrollbar-mitigate' : vm.scrolling}">
-    <span flex="5">Control</span>
-    <span flex="20">Rectangle 1</span>
-    <span flex="20">Rectangle 2</span>
-    <span flex="10">Expected Results</span>
-    <span flex="15">Notes</span>
+    <span flex="5" layout="row" layout-align="center center">Index</span>
+    <span flex="5" layout="row" layout-align="center center">Control</span>
+    <span flex="20" layout="row" layout-align="center center">Rectangle 1</span>
+    <span flex="20" layout="row" layout-align="center center">Rectangle 2</span>
+    <span flex="10" layout="row" layout-align="center center">Expected Results</span>
+    <span flex="10" layout="row" layout-align="center center">Notes</span>
     <div class="label-bar" flex="30" layout="row" layout-padding layout-align="center center">
         <div ng-repeat="alg in vm.algorithms" layout-align="center center" flex>
         {{alg.name}}
@@ -71,16 +72,18 @@
 </md-toolbar>
 <md-content layout="column" id="this-can-scroll">
 <div ng-repeat="test in vm.testCases" layout="row" layout-padding class="test-case">
+        <div flex="5" layout="row" layout-align="center center">{{$index}}</div>
+
         <div layout="column" class="box-conf" flex="5">
             <!-- <div> -->
-                <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTests()"><i class="fa fa-play" aria-label="play"></i></md-button>
+                <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTest(test)"><i class="fa fa-play" aria-label="play"></i></md-button>
                 <md-button class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
                     <i class="fa fa-trash"></i>
                 </md-button>
             <!-- </div> -->
         </div>
         <div layout="column" flex="20">
-            <div layout-padding  layout="row">
+            <div layout-padding  layout="row" layout-align="center center">
                 <md-input-container class="box-input">
                     <label>X Coord</label>
                     <input ng-model="test.box1.x" type="number" step="1" min="0">
@@ -100,7 +103,7 @@
             </div>
         </div>
         <div layout="column" flex="20">
-            <div layout-padding class="autoScroll" layout="row">
+            <div layout-padding class="autoScroll" layout="row"  layout-align="center center">
                 <md-input-container class="box-input">
                     <label>X Coord</label>
                     <input ng-model="test.box2.x" type="number" step="1" min="0">
@@ -124,7 +127,7 @@
                 {{ test.expected }}
             </md-switch>
         </div>
-        <div layout-padding flex="15">
+        <div layout-padding flex="10">
             <md-input-container>
                 <label>optional</label>
                 <input ng-model="test.notes" type="text">
