@@ -71,8 +71,8 @@
     </div>
 </md-toolbar>
 <md-content layout="column" id="this-can-scroll">
-<div ng-repeat="test in vm.testCases" layout="row" layout-padding class="test-case">
-        <div flex="5" layout="row" layout-align="center center">{{$index}}</div>
+<div ng-repeat="test in vm.testCases  | orderBy:'number':true" layout="row" layout-padding class="test-case">
+        <div flex="5" layout="row" layout-align="center center">{{test.number}}</div>
 
         <div layout="column" class="box-conf" flex="5">
             <!-- <div> -->

@@ -1,7 +1,8 @@
 (function () {
     angular.module("BoxBlackBox").controller("BoxTestController",["algorithmService", BoxTestController]);
 
-    function TestCase(box1, box2) {
+    function TestCase(number, box1, box2) {
+        this.number =number;
         this.box1 = box1;
         this.box2 = box2;
         this.results = [];
@@ -36,6 +37,7 @@
         vm.testCases = [];
         vm.algorithms = algorithmService.getAlgorithms();
         vm.scrolling = isOverflowed();
+        vm.number = 0;
 
         vm.runTests = function() {
             vm.testCases.forEach(runTestSuit);
@@ -68,7 +70,8 @@
         function newTest() {
             var box1 = new Box(0, 0, 1, 1);
             var box2 = new Box(3, 3, 1, 1);
-            var test = new TestCase(box1, box2);
+            var test = new TestCase(vm.number, box1, box2);
+            vm.number++;
             vm.testCases.push(test);
             vm.scrolling = isOverflowed();
         }
