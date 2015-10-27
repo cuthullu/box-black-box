@@ -37,6 +37,15 @@ md-input-container {
 }
 
 div.brief {
-    width: 200px;
+    width: 300px;
     margin-right: 20px;
+}
+
+p.brief {
+    margin-top: 2px;
+}
+
+.full-div{
+    width: inherit;
+    height: inherit;
 }
