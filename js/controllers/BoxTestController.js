@@ -113,8 +113,8 @@
         }
 
         function newTest() {
-            var box1 = new Box(0, 0, 0, 0);
-            var box2 = new Box(0, 0, 0, 0);
+            var box1 = new Box(0, 0, 2, 2);
+            var box2 = new Box(0, 0, 1, 1);
             var test = new TestCase(vm.number, box1, box2);
             vm.number++;
             vm.testCases.push(test);

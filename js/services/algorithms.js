@@ -95,10 +95,10 @@
         //correct answer but out by one errors?  Is there an ‘out-by-one’ error available without duplicating ‘e’?
         function f(box1, box2) {
             box2 = {
-                "x" : box2.x -1 ,
-                "y" : box2.y - 1,
-                "width" : box1.width,
-                "height" : box1.height,
+                "x" : box2.x,
+                "y" : box2.y,
+                "width" : box1.width -1,
+                "height" : box1.height -1,
             }
             if(box1.x < (box2.x + box2.width) &&
                 (box1.x + box1.width) > box2.x  &&
@@ -114,27 +114,28 @@
         //any vertex inside the area of the opposite rectangle is an overlap, and nothing else is
         //only plus sign and identical rectangles fail
         function g(box1, box2) {
-            if(box1.x < (box2.x + box2.width) &&
-                box1.x > box2.x  &&
-                box1.y < (box2.y + box2.height) &&
-                box1.y  > box2.y ){
+            return doBothWays(box1, box2, function(box1, box2) { 
+                if((box1.x > box2.x && box1.x < (box2.x + box2.width)) ||
+                    (box1.y > box2.y && box1.y < (box2.y + box2.height)) ||
+                    ((box1.x + box1.width) > box2.x && (box1.x + box1.width) < (box2.x + box2.width)) ||
+                    ((box1.y + box1.height) > box2.y && (box1.y + box1.height)< (box2.y + box2.height))) {
+                    return true;
+                }
+                return false;
 
-                return true;
-            }
-            return false;
+            });
         }
 
         // any vertex of B inside rectangle A
         //plus sign, identical rectangles and B bigger than A fail
-        function h(box1, box2) {
-            if((box2.x < (box1.x + box1.width) &&
-                box2.x > box1.x  ) ||
-                (box2.y < (box1.y + box1.height) &&
-                box2.y  > box1.y )){
-
-                return true;
-            }
-            return false;
+        function h(box2, box1) {
+            if((box1.x > box2.x && box1.x < (box2.x + box2.width)) ||
+                    (box1.y > box2.y && box1.y < (box2.y + box2.height)) ||
+                    ((box1.x + box1.width) > box2.x && (box1.x + box1.width) < (box2.x + box2.width)) ||
+                    ((box1.y + box1.height) > box2.y && (box1.y + box1.height)< (box2.y + box2.height))) {
+                    return true;
+                }
+                return false;
         }
 
         //My Way
