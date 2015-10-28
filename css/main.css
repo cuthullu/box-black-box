@@ -10,6 +10,8 @@ md-input-container input {
     border-bottom-color: #989898;
     border-bottom-style: solid;
     border-bottom-width: initial;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 .result-thing.my-primary {
