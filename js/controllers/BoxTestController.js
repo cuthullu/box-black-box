@@ -99,9 +99,12 @@
             if(testCase.isValid()){
                 testCase.resultsInvalid = false;
                 vm.algorithms.forEach(function(algorithm) {
+                    var out = algorithm.run(testCase.box1, testCase.box2);
                     testCase.results.push({
                         "algorithm" : algorithm.name,
-                        "outCome" : algorithm.run(testCase.box1, testCase.box2)
+                        "algOutCome" : out,
+                        "result" : out === testCase.expected
+
                     });
                 })
             } else {

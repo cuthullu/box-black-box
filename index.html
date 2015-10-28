@@ -72,7 +72,9 @@
 </md-toolbar>
 <md-content layout="column" id="this-can-scroll">
 <div ng-repeat="test in vm.testCases  | orderBy:'number':true" layout="row" layout-padding class="test-case">
-        <div flex="5" layout="row" layout-align="center center">{{test.number}}</div>
+        <div flex="5" layout="row" layout-align="center center">
+        <h2 class="md-display-1">{{test.number}}</h2>
+        </div>
 
         <div layout="column" class="box-conf" flex="10" layout-align="center center">
             <div layout="row">
@@ -128,7 +130,7 @@
             </div>
         </div>
         <div flex="5" layout-align="center center" layout="column">
-            <md-switch ng-model="test.expected" aria-label="Switch 2" class="md-accent">
+            <md-switch ng-change="vm.testChanged(test)" ng-model="test.expected" aria-label="Switch 2" class="md-accent">
                 <strong class="">{{ test.expected | uppercase }}</strong>
             </md-switch>
             
@@ -150,12 +152,10 @@
         <div class="test-results" layout="row" layout-align="center center">
             
             <span ng-repeat="result in test.results track by $index" layout="row" flex>
-                <div ng-if="result.outCome === test.expected" flex class="result-thing my-primary">
-                     <!-- <strong>Pass</strong> -->
+                <div ng-if="result.result" flex class="result-thing my-primary">
                      <icon class="fa fa-check-square fa-2x"></icon>
                  </div>
-                <div ng-if="result.outCome !== test.expected" flex class="result-thing  my-warn">
-                    <!-- <strong>Fail</strong> -->
+                <div ng-if="!result.result" flex class="result-thing  my-warn">
                     <icon class="fa fa-minus-square fa-2x"></icon>
                 </div>
                 <md-tooltip>
