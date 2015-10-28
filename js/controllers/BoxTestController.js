@@ -122,7 +122,7 @@
                 vm.scrolling = isOverflowed();    
             });
             
-            focus('xcoord0');
+            focus("xcoord" +(vm.number - 1));
         }
 
         function isOverflowed(){
