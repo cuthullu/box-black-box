@@ -59,10 +59,10 @@
 </md-toolbar>
 <md-toolbar layout="row" class="label-bar md-accent md-hue-1" layout-padding ng-class="{'scrollbar-mitigate' : vm.scrolling}">
     <span flex="5" layout="row" layout-align="center center">Index</span>
-    <span flex="5" layout="row" layout-align="center center">Control</span>
+    <span flex="10" layout="row" layout-align="center center">Control</span>
     <span flex="20" layout="row" layout-align="center center">Rectangle 1</span>
     <span flex="20" layout="row" layout-align="center center">Rectangle 2</span>
-    <span flex="10" layout="row" layout-align="center center">Expected Results</span>
+    <span flex="5" layout="row" layout-align="center center">Expected</span>
     <span flex="10" layout="row" layout-align="center center">Notes</span>
     <div class="label-bar" flex="30" layout="row" layout-padding layout-align="center center">
         <div ng-repeat="alg in vm.algorithms" layout-align="center center" flex>
@@ -74,13 +74,18 @@
 <div ng-repeat="test in vm.testCases  | orderBy:'number':true" layout="row" layout-padding class="test-case">
         <div flex="5" layout="row" layout-align="center center">{{test.number}}</div>
 
-        <div layout="column" class="box-conf" flex="5">
-            <!-- <div> -->
+        <div layout="column" class="box-conf" flex="10" layout-align="center center">
+            <div layout="row">
                 <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTest(test)"><i class="fa fa-play" aria-label="play"></i></md-button>
+                <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.revert(test)" ng-disabled="!test.resultsInvalid">
+                    <i class="fa fa-undo" aria-label="play"></i>
+                </md-button>
+            </div>
+            <div layout="row" class="bottom-row">
                 <md-button class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
                     <i class="fa fa-trash"></i>
                 </md-button>
-            <!-- </div> -->
+            </div>
         </div>
         <div layout="column" flex="20">
             <div layout-padding  layout="row" layout-align="center center" >
@@ -122,10 +127,11 @@
                 </md-input-container>
             </div>
         </div>
-        <div layout-padding flex="10">
+        <div flex="5" layout-align="center center" layout="column">
             <md-switch ng-model="test.expected" aria-label="Switch 2" class="md-accent">
-                {{ test.expected }}
+                <strong class="">{{ test.expected | uppercase }}</strong>
             </md-switch>
+            
         </div>
         <div layout-padding flex="10">
             <md-input-container>

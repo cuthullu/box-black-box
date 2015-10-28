@@ -70,15 +70,15 @@ p.brief {
 div.label-bar {
     padding-bottom: 0px;
     padding-top: 0px; 
-}
+}/*
 .box-conf button:first-child {
     margin-top: 0px;
     margin-left: 0px;
 }
-
-.box-conf button:last-child {
-    margin-top: -13px;
-    margin-left: 34px;
+*/
+.box-conf div:last-child button{
+    margin-top: -9px;
+    /*margin-left: 34px;*/
 }
 
 .text-centered {
@@ -91,4 +91,9 @@ div.label-bar {
 }
 .invalid .result-thing.my-warn {
     color: rgba(255, 0, 0, 0.5);
+}
+
+.expected-result {
+    text-align: center;
+    padding-right: 16px;
 }

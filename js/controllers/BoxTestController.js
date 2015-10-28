@@ -12,6 +12,17 @@
         this.isValid = function() {
             return box1.isValid() && box2.isValid();
         }
+
+        this.backup = function() {
+            box1.backup();
+            box2.backup();
+        }
+
+        this.revert = function() {
+            box1.revert();
+            box2.revert();
+            this.resultsInvalid = false;
+        }
     }
 
     function Box(x, y, width, height) {
@@ -30,6 +41,24 @@
 
         function isInt(i) {
             return i === parseInt(i, 10);
+        }
+
+        this.backup = function() {
+            self.back = {
+                x : self.x,
+                y : self.y,
+                width : self.width,
+                height : self.height
+            }
+        }
+
+        this.revert = function() {
+            if(this.back !== undefined){
+                self.x = self.back.x;
+                self.y = self.back.y;
+                self.width = self.back.width;
+                self.history = self.back.history;
+            }
         }
     }
 
@@ -55,12 +84,17 @@
             }
         }
 
+        vm.revert = function(test) {
+            test.revert();
+        }
+
         vm.plusTest = newTest;
         vm.runTest = runTestSuit;
 
         function runTestSuit(testCase) {
             testCase.results = [];
             testCase.errors = "";
+            testCase.backup();
 
             if(testCase.isValid()){
                 testCase.resultsInvalid = false;
