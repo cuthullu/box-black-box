@@ -83,22 +83,22 @@
             <!-- </div> -->
         </div>
         <div layout="column" flex="20">
-            <div layout-padding  layout="row" layout-align="center center">
+            <div layout-padding  layout="row" layout-align="center center" >
                 <md-input-container class="box-input">
                     <label>X Coord</label>
-                    <input ng-model="test.box1.x" type="number" step="1" min="0">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box1.x" type="number" step="1" min="0">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Y Coord</label>
-                    <input ng-model="test.box1.y" type="number" step="1" min="0">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box1.y" type="number" step="1" min="0">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Width</label>
-                    <input ng-model="test.box1.width" type="number" step="1" min="1">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box1.width" type="number" step="1" min="1">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Height</label>
-                    <input ng-model="test.box1.height" type="number" step="1" min="1">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box1.height" type="number" step="1" min="1">
                 </md-input-container>
             </div>
         </div>
@@ -106,19 +106,19 @@
             <div layout-padding class="autoScroll" layout="row"  layout-align="center center">
                 <md-input-container class="box-input">
                     <label>X Coord</label>
-                    <input ng-model="test.box2.x" type="number" step="1" min="0">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box2.x" type="number" step="1" min="0">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Y Coord</label>
-                    <input ng-model="test.box2.y" type="number" step="1" min="0">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box2.y" type="number" step="1" min="0">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Width</label>
-                    <input ng-model="test.box2.width" type="number" step="1" min="1">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box2.width" type="number" step="1" min="1">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Height</label>
-                    <input ng-model="test.box2.height" type="number" step="1" min="1">
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box2.height" type="number" step="1" min="1">
                 </md-input-container>
             </div>
         </div>
@@ -134,11 +134,15 @@
             </md-input-container>
         </div>
         <!-- <span flex></span> -->
-    <div class="result" layout="column" flex="30">
+    <div class="result" layout="column" flex="30" ng-class="{'invalid' : test.resultsInvalid}">
         <div class="errors" layout-align="center center">
             <p>{{test.errors}}</p>
         </div>
+        <span ng-if="test.resultsInvalid" class="text-centered">
+            <em>results not valid for the current set up</em>
+        </span>
         <div class="test-results" layout="row" layout-align="center center">
+            
             <span ng-repeat="result in test.results track by $index" layout="row" flex>
                 <div ng-if="result.outCome === test.expected" flex class="result-thing my-primary">
                      <!-- <strong>Pass</strong> -->

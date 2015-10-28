@@ -7,6 +7,7 @@
         this.box2 = box2;
         this.results = [];
         this.expected = true;
+        this.resultsInvalid = false;
 
         this.isValid = function() {
             return box1.isValid() && box2.isValid();
@@ -48,6 +49,12 @@
             vm.scrolling = isOverflowed();
         }
 
+        vm.testChanged = function(test){
+            if(test.results.length > 0 && !test.resultsInvalid) {
+                test.resultsInvalid = true;
+            }
+        }
+
         vm.plusTest = newTest;
         vm.runTest = runTestSuit;
 
@@ -56,6 +63,7 @@
             testCase.errors = "";
 
             if(testCase.isValid()){
+                testCase.resultsInvalid = false;
                 vm.algorithms.forEach(function(algorithm) {
                     testCase.results.push({
                         "algorithm" : algorithm.name,

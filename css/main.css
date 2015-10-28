@@ -4,7 +4,7 @@
 }
 
 md-input-container input {
-    /*width: 96px;*/
+    width: 96%;
 }
 .test-case {
     border-bottom-color: #989898;
@@ -66,7 +66,7 @@ p.brief {
     min-height: 30px;
     height: 33px;
 }
-
+    
 div.label-bar {
     padding-bottom: 0px;
     padding-top: 0px; 
@@ -79,4 +79,16 @@ div.label-bar {
 .box-conf button:last-child {
     margin-top: -13px;
     margin-left: 34px;
+}
+
+.text-centered {
+    text-align: center;
+    color: grey;
+}
+
+.invalid .result-thing.my-primary {
+    color: rgba(0, 255, 0, 0.5);
+}
+.invalid .result-thing.my-warn {
+    color: rgba(255, 0, 0, 0.5);
 }
