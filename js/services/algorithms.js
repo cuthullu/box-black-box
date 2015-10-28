@@ -8,7 +8,6 @@
 
         algorithms.push({"name": "a", "run" : a });
         algorithms.push({"name": "b", "run" : b });
-        algorithms.push({"name": "c", "run" : c });
         algorithms.push({"name": "d", "run" : d });
         algorithms.push({"name": "e", "run" : e });
         algorithms.push({"name": "f", "run" : f });
@@ -61,11 +60,6 @@
                 return true;
             }
             return false;
-        }
-
-        //Always true
-        function c(box1, box2) {
-            return true
         }
 
         //true unless rectangles fail to overlap in both planes (so we get too many ‘true’ answers).
