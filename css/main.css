@@ -99,3 +99,13 @@ div.label-bar {
     text-align: center;
     padding-right: 16px;
 }
+
+.plus-button-div {
+    opacity: 0.9;
+    height: 100px;
+    margin: 4px;
+}
+
+.plus-button-div button{
+    height: 100%;
+}
