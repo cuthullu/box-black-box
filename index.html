@@ -61,8 +61,7 @@
 
 </md-toolbar>
 <md-toolbar layout="row" class="label-bar" layout-padding ng-class="{'scrollbar-mitigate' : vm.scrolling}">
-    <span flex="5" layout="row" layout-align="center center">Index</span>
-    <span flex="10" layout="row" layout-align="center center">Control</span>
+    <span flex="15" layout="row" layout-align="center center">Control</span>
     <span flex="20" layout="row" layout-align="center center">Rectangle 1</span>
     <span flex="20" layout="row" layout-align="center center">Rectangle 2</span>
     <span flex="5" layout="row" layout-align="center center">Expected</span>
@@ -75,11 +74,7 @@
 </md-toolbar>
 <md-content layout="column" id="this-can-scroll">
 <form name="testForm" ng-submit="vm.runTest(test)" ng-repeat="test in vm.testCases  | orderBy:'number':false" layout="row" layout-padding class="test-case">
-        <div flex="5" layout="row" layout-align="center center">
-            <h2 class="md-display-1">{{test.number}}</h2>
-        </div>
-
-        <div layout="column" class="box-conf" flex="10" layout-align="center center">
+        <div layout="column" class="box-conf" flex="15" layout-align="center center">
             <div layout="row">
                 <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTest(test)">
                     <i class="fa fa-play" aria-label="play"></i>
@@ -100,7 +95,7 @@
         <div layout="column" flex="20">
             <div layout-padding  layout="row" layout-align="center center" >
                 <md-input-container class="box-input">
-                    <label>X Coord {{$index}}</label>
+                    <label>X Coord</label>
                     <input ng-change="vm.testChanged(test)" ng-model="test.box1.x" type="number" step="1" min="0" id="xcoord{{$index}}">
                 </md-input-container>
                 <md-input-container class="box-input">
