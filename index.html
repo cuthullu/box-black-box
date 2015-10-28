@@ -25,8 +25,14 @@
     </div>
     <span flex></span>
     <div layout="row" layout-padding>
-        <md-button class="md-raised" ng-click="vm.runTests()"><i class="fa fa-play"></i></md-button>
-        <md-button class="md-accent md-raised" ng-click="vm.plusTest()"><i class="fa fa-plus"></i></md-button>
+        <md-button class="md-raised" ng-click="vm.runTests()">
+            <i class="fa fa-play"></i>
+            <md-tooltip>Run all test cases</md-tooltip>
+        </md-button>
+        <md-button class="md-accent md-raised" ng-click="vm.plusTest()">
+            <i class="fa fa-plus"></i>
+            <md-tooltip>Add another test case</md-tooltip>
+        </md-button>
     </div>
     <span flex></span>
     <div class="brief">
@@ -78,13 +84,18 @@
 
         <div layout="column" class="box-conf" flex="10" layout-align="center center">
             <div layout="row">
-                <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTest(test)"><i class="fa fa-play" aria-label="play"></i></md-button>
+                <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTest(test)">
+                    <i class="fa fa-play" aria-label="play"></i>
+                    <md-tooltip>Run this test case</md-tooltip>
+                </md-button>
                 <md-button class="md-fab md-raised  md-mini md-raised md-accent" ng-click="vm.revert(test)" ng-disabled="!test.resultsInvalid">
-                    <i class="fa fa-undo" aria-label="play"></i>
+                    <md-tooltip>Undo to last run test</md-tooltip>
+                    <i class="fa fa-undo" aria-label="undo"></i>
                 </md-button>
             </div>
             <div layout="row" class="bottom-row">
                 <md-button class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
+                    <md-tooltip md-direction="top">Remove this test case</md-tooltip>
                     <i class="fa fa-trash"></i>
                 </md-button>
             </div>
