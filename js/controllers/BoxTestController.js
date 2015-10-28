@@ -1,5 +1,5 @@
 (function () {
-    angular.module("BoxBlackBox").controller("BoxTestController",["algorithmService", BoxTestController]);
+    angular.module("BoxBlackBox").controller("BoxTestController",["algorithmService", "focus", BoxTestController]);
 
     function TestCase(number, box1, box2) {
         this.number =number;
@@ -62,7 +62,7 @@
         }
     }
 
-    function BoxTestController(algorithmService) {
+    function BoxTestController(algorithmService, focus) {
         var vm = this;
         vm.testCases = [];
         vm.algorithms = algorithmService.getAlgorithms();
@@ -119,12 +119,14 @@
             vm.number++;
             vm.testCases.push(test);
             vm.scrolling = isOverflowed();
+            focus('xcoord0');
         }
 
         function isOverflowed(){
             var element = document.getElementById("this-can-scroll");
             return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
         }
+        newTest();
         newTest();
 
         // var box1 = new Box(0,0,4,4)

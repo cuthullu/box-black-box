@@ -92,8 +92,8 @@
         <div layout="column" flex="20">
             <div layout-padding  layout="row" layout-align="center center" >
                 <md-input-container class="box-input">
-                    <label>X Coord</label>
-                    <input ng-change="vm.testChanged(test)" ng-model="test.box1.x" type="number" step="1" min="0">
+                    <label>X Coord {{$index}}</label>
+                    <input ng-change="vm.testChanged(test)" ng-model="test.box1.x" type="number" step="1" min="0" id="xcoord{{$index}}">
                 </md-input-container>
                 <md-input-container class="box-input">
                     <label>Y Coord</label>
@@ -182,6 +182,8 @@
 <!-- Services -->
 <script src="js/services/algorithms.js"></script>
 
+<!-- Directives -->
+<script src="js/directives/focusMe.js"></script>
 </md-content>
 </div>
 </body>
