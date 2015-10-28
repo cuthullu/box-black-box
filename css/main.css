@@ -9,7 +9,7 @@ md-input-container input {
 .test-case {
     border-bottom-color: #989898;
     border-bottom-style: solid;
-    border-bottom-width: initial;
+    border-bottom-width: 1px;
     padding-bottom: 0px;
     padding-top: 0px;
 }
@@ -62,11 +62,16 @@ p.brief {
     padding-right: 25px;
 }
 
-.label-bar {
+md-toolbar.label-bar {
     padding-bottom: 0px;
     padding-top: 0px;
     min-height: 30px;
     height: 33px;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    background-color: white;
+    color: black;
 }
     
 div.label-bar {

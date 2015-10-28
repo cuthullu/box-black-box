@@ -24,15 +24,12 @@
         <p><em>Black Box Test Suite</em></p>
     </div>
     <span flex></span>
-    <div layout="row" layout-padding>
+    <div layout="column" layout-padding>
         <md-button class="md-raised" ng-click="vm.runTests()">
             <i class="fa fa-play"></i>
-            <md-tooltip>Run all test cases</md-tooltip>
+            Run all test cases
         </md-button>
-        <md-button class="md-accent md-raised" ng-click="vm.plusTest()">
-            <i class="fa fa-plus"></i>
-            <md-tooltip>Add another test case</md-tooltip>
-        </md-button>
+       
     </div>
     <span flex></span>
     <div class="brief">
@@ -63,7 +60,7 @@
     </div>
 
 </md-toolbar>
-<md-toolbar layout="row" class="label-bar md-accent md-hue-1" layout-padding ng-class="{'scrollbar-mitigate' : vm.scrolling}">
+<md-toolbar layout="row" class="label-bar" layout-padding ng-class="{'scrollbar-mitigate' : vm.scrolling}">
     <span flex="5" layout="row" layout-align="center center">Index</span>
     <span flex="10" layout="row" layout-align="center center">Control</span>
     <span flex="20" layout="row" layout-align="center center">Rectangle 1</span>
