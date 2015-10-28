@@ -77,9 +77,9 @@
     </div>
 </md-toolbar>
 <md-content layout="column" id="this-can-scroll">
-<div ng-repeat="test in vm.testCases  | orderBy:'number':true" layout="row" layout-padding class="test-case">
+<form name="testForm" ng-submit="vm.runTest(test)" ng-repeat="test in vm.testCases  | orderBy:'number':true" layout="row" layout-padding class="test-case">
         <div flex="5" layout="row" layout-align="center center">
-        <h2 class="md-display-1">{{test.number}}</h2>
+            <h2 class="md-display-1">{{test.number}}</h2>
         </div>
 
         <div layout="column" class="box-conf" flex="10" layout-align="center center">
@@ -153,29 +153,29 @@
             </md-input-container>
         </div>
         <!-- <span flex></span> -->
-    <div class="result" layout="column" flex="30" ng-class="{'invalid' : test.resultsInvalid}">
-        <div class="errors" layout-align="center center">
-            <p>{{test.errors}}</p>
-        </div>
-        <span ng-if="test.resultsInvalid" class="text-centered">
-            <em>results not valid for the current set up</em>
-        </span>
-        <div class="test-results" layout="row" layout-align="center center">
-            
-            <span ng-repeat="result in test.results track by $index" layout="row" flex>
-                <div ng-if="result.result" flex class="result-thing my-primary">
-                     <icon class="fa fa-check-square fa-2x"></icon>
-                 </div>
-                <div ng-if="!result.result" flex class="result-thing  my-warn">
-                    <icon class="fa fa-minus-square fa-2x"></icon>
-                </div>
-                <md-tooltip>
-                {{result.algorithm}}
-            </md-tooltip>
+        <div class="result" layout="column" flex="30" ng-class="{'invalid' : test.resultsInvalid}">
+            <div class="errors" layout-align="center center">
+                <p>{{test.errors}}</p>
+            </div>
+            <span ng-if="test.resultsInvalid" class="text-centered">
+                <em>results not valid for the current set up</em>
             </span>
+            <div class="test-results" layout="row" layout-align="center center">
+                
+                <span ng-repeat="result in test.results track by $index" layout="row" flex>
+                    <div ng-if="result.result" flex class="result-thing my-primary">
+                         <icon class="fa fa-check-square fa-2x"></icon>
+                     </div>
+                    <div ng-if="!result.result" flex class="result-thing  my-warn">
+                        <icon class="fa fa-minus-square fa-2x"></icon>
+                    </div>
+                    <md-tooltip>
+                    {{result.algorithm}}
+                </md-tooltip>
+                </span>
+            </div>
         </div>
-    </div>
-</div>
+</form>
 <!--External Modules-->
 <!-- Angular Material Dependencies -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
