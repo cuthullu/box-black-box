@@ -12,6 +12,7 @@ md-input-container input {
     border-bottom-width: 1px;
     padding-bottom: 0px;
     padding-top: 0px;
+    background-color: white;
 }
 
 .result-thing.my-primary {
@@ -77,22 +78,20 @@ md-toolbar.label-bar {
 div.label-bar {
     padding-bottom: 0px;
     padding-top: 0px; 
-}/*
-.box-conf button:first-child {
-    margin-top: 0px;
-    margin-left: 0px;
 }
-*/
+
 .box-conf div:last-child button{
     margin-top: -9px;
-    /*margin-left: 34px;*/
 }
 
 .text-centered {
     text-align: center;
     color: grey;
 }
-
+.app{
+  height: 106px;
+  background-color: #E0E0E0;
+}
 .invalid .result-thing.my-primary {
     color: rgba(0, 255, 0, 0.5);
 }
@@ -113,4 +112,8 @@ div.label-bar {
 
 .plus-button-div button{
     height: 100%;
+}
+
+.myHandle {
+    cursor: move;
 }

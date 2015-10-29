@@ -68,6 +68,7 @@
         vm.algorithms = algorithmService.getAlgorithms();
         vm.scrolling = isOverflowed();
         vm.number = 0;
+        vm.sorting = true;
 
         vm.runTests = function() {
             vm.testCases.forEach(runTestSuit);
@@ -90,6 +91,11 @@
 
         vm.plusTest = newTest;
         vm.runTest = runTestSuit;
+
+        vm.sortableOptions = {
+            handle: '> .myHandle',
+            placeholder: "app"
+        };
 
         function runTestSuit(testCase) {
             testCase.results = [];
