@@ -107,6 +107,7 @@
             var tBox = test.box1;
             test.box1 = test.box2;
             test.box2 = tBox;
+            test.resultsInvalid = true;
         }
 
         vm.revert = function(test) {

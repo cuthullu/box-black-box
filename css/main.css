@@ -93,7 +93,7 @@ div.label-bar {
   background-color: #E0E0E0;
 }
 .invalid .result-thing.my-primary {
-    color: rgba(0, 255, 0, 0.5);
+    color: rgba(71, 132, 71, 0.55);
 }
 .invalid .result-thing.my-warn {
     color: rgba(255, 0, 0, 0.5);

@@ -1,6 +1,6 @@
 angular.module("BoxBlackBox", [ "ngMessages", "ngMaterial",  "ui.sortable"]).config(function ($mdThemingProvider) {
     $mdThemingProvider.theme("default")
-        .primaryPalette("green")
+        .primaryPalette("blue-grey")
         .warnPalette("red")
-        .accentPalette("blue");
+        .accentPalette("deep-orange");
 });
