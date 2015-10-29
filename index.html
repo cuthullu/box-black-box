@@ -79,22 +79,27 @@
         </div>
         <form name="testForm" ng-submit="vm.runTest(test)" layout="row" layout-fill>
         <div layout="row" class="box-conf" flex layout-align="center center">
-            <div layout="row">
-                <md-button class="md-fab md-raised  md-mini md-raised md-primary" ng-click="vm.runTest(test)">
-                    <i class="fa fa-play" aria-label="play"></i>
-                    <md-tooltip>Run this test case</md-tooltip>
-                </md-button>
-            </div>
+                
+            <md-button class="md-fab md-raised  md-mini md-raised md-primary" ng-click="vm.runTest(test)">
+                <i class="fa fa-play" aria-label="play"></i>
+                <md-tooltip>Run this test case</md-tooltip>
+            </md-button>
+        
+            <md-button type="button" class="md-fab md-raised  md-mini md-raised" ng-click="vm.swap(test)">
+                <i class="fa fa-retweet" aria-label="Swap"></i>
+                <md-tooltip>Swap the rectangles</md-tooltip>
+            </md-button>
+
             <md-button type="button" class="md-fab md-raised  md-mini md-raised" ng-click="vm.clone(test)">
                 <i class="fa fa-clone" aria-label="Clone"></i>
                 <md-tooltip>Clone this test case</md-tooltip>
             </md-button>
-            <div layout="row" class="bottom-row">
-                <md-button type="button" class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
-                    <md-tooltip md-direction="top">Remove this test case</md-tooltip>
-                    <i class="fa fa-trash"></i>
-                </md-button>
-            </div>
+            
+            <md-button type="button" class="md-fab md-raised  md-mini md-warn" ng-click="vm.delete(test)" aria-label="delete">
+                <md-tooltip md-direction="top">Remove this test case</md-tooltip>
+                <i class="fa fa-trash"></i>
+            </md-button>
+        
         </div>
         <div layout="column" flex="20">
             <div layout-padding  layout="row" layout-align="center center" >

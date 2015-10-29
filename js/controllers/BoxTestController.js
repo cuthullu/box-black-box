@@ -103,6 +103,12 @@
             }
         }
 
+        vm.swap = function(test) {
+            var tBox = test.box1;
+            test.box1 = test.box2;
+            test.box2 = tBox;
+        }
+
         vm.revert = function(test) {
             test.revert();
         }
