@@ -8,7 +8,7 @@
 
         algorithms.push({"name": "a", "run" : a });
         algorithms.push({"name": "b", "run" : b });
-        algorithms.push({"name": "d", "run" : d });
+        // algorithms.push({"name": "d", "run" : d });
         algorithms.push({"name": "e", "run" : e });
         algorithms.push({"name": "f", "run" : f });
         algorithms.push({"name": "g", "run" : g });
@@ -62,17 +62,17 @@
             return false;
         }
 
-        //true unless rectangles fail to overlap in both planes (so we get too many ‘true’ answers).
-        function d(box1, box2) {
-            if((box1.x < (box2.x + box2.width) &&
-                (box1.x + box1.width) > box2.x ) ||
-                (box1.y < (box2.y + box2.height) &&
-                (box1.y + box1.height) > box2.y )){
+        // //true unless rectangles fail to overlap in both planes (so we get too many ‘true’ answers).
+        // function d(box1, box2) {
+        //     if((box1.x < (box2.x + box2.width) &&
+        //         (box1.x + box1.width) > box2.x ) ||
+        //         (box1.y < (box2.y + box2.height) &&
+        //         (box1.y + box1.height) > box2.y )){
 
-                return true;
-            }
-            return false;
-        }
+        //         return true;
+        //     }
+        //     return false;
+        // }
 
         //correct answer but also any touching [edge/vertex] is considered an overlap – incorrect according to spec
         function e(box1, box2) {
