@@ -75,7 +75,11 @@
         }
 
         vm.delete = function(test) {
+            console.log("before", vm.testCases);
             vm.testCases.splice(vm.testCases.indexOf(test), 1);
+            console.log("after", vm.testCases);
+            console.log("vm ", vm);
+            
             vm.scrolling = isOverflowed();
         }
 

@@ -81,7 +81,7 @@ div.label-bar {
 }
 
 .box-conf div:last-child button{
-    margin-top: -9px;
+    /*margin-top: -9px;*/
 }
 
 .text-centered {

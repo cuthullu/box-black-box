@@ -78,15 +78,11 @@
             <i class="fa fa-arrows-v fa-3x"></i>
         </div>
         <form name="testForm" ng-submit="vm.runTest(test)" layout="row" layout-fill>
-        <div layout="column" class="box-conf" flex layout-align="center center">
+        <div layout="row" class="box-conf" flex layout-align="center center">
             <div layout="row">
                 <md-button class="md-fab md-raised  md-mini md-raised" ng-click="vm.runTest(test)">
                     <i class="fa fa-play" aria-label="play"></i>
                     <md-tooltip>Run this test case</md-tooltip>
-                </md-button>
-                <md-button class="md-fab md-raised  md-mini md-raised md-accent" ng-click="vm.revert(test)" ng-disabled="!test.resultsInvalid">
-                    <md-tooltip>Undo to last run test</md-tooltip>
-                    <i class="fa fa-undo" aria-label="undo"></i>
                 </md-button>
             </div>
             <div layout="row" class="bottom-row">
