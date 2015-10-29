@@ -8,6 +8,7 @@
         this.results = [];
         this.expected = true;
         this.resultsInvalid = false;
+        var self = this;
 
         this.isValid = function() {
             return box1.isValid() && box2.isValid();
@@ -22,6 +23,14 @@
             box1.revert();
             box2.revert();
             this.resultsInvalid = false;
+        }
+
+        this.clone = function(number) {
+            var testCase = new TestCase(number, self.box1.clone(), self.box2.clone());
+            testCase.notes = self.notes;
+            testCase.expected = self.expected;
+            console.log(testCase);
+            return testCase;
         }
     }
 
@@ -43,13 +52,12 @@
             return i === parseInt(i, 10);
         }
 
+        this.clone = function() {
+            return new Box(self.x, self.y, self.width, self.height);
+        }
+
         this.backup = function() {
-            self.back = {
-                x : self.x,
-                y : self.y,
-                width : self.width,
-                height : self.height
-            }
+            self.back = self.clone();
         }
 
         this.revert = function() {
@@ -81,6 +89,12 @@
             console.log("vm ", vm);
             
             vm.scrolling = isOverflowed();
+        }
+
+        vm.clone = function(test) {
+            vm.testCases.splice(vm.testCases.indexOf(test) + 1, 0, test.clone(vm.number));
+            focus("xcoord" +(vm.number));
+            vm.number ++;
         }
 
         vm.testChanged = function(test){
