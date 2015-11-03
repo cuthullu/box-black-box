@@ -8,14 +8,14 @@
 
         algorithms.push({"name": "a", "run" : a });
         algorithms.push({"name": "b", "run" : b });
-        // algorithms.push({"name": "d", "run" : d });
+        algorithms.push({"name": "d", "run" : d });
         algorithms.push({"name": "e", "run" : e });
-        algorithms.push({"name": "f", "run" : f });
         algorithms.push({"name": "g", "run" : g });
-        algorithms.push({"name": "h", "run" : h });
+        // algorithms.push({"name": "h", "run" : h });
         algorithms.push({"name": "i", "run" : i });
         algorithms.push({"name": "j", "run" : j });
-        algorithms.push({"name": "k", "run" : k });
+        // algorithms.push({"name": "k*", "run" : k });
+        // algorithms.push({"name": "l*", "run" : l   });
 
         return service;
 
@@ -58,21 +58,21 @@
                 (box1.x + box1.width) < (box2.x + box2.width)))) {
 
                 return true;
-            }
+            }6
             return false;
         }
 
-        // //true unless rectangles fail to overlap in both planes (so we get too many ‘true’ answers).
-        // function d(box1, box2) {
-        //     if((box1.x < (box2.x + box2.width) &&
-        //         (box1.x + box1.width) > box2.x ) ||
-        //         (box1.y < (box2.y + box2.height) &&
-        //         (box1.y + box1.height) > box2.y )){
+        //true unless rectangles fail to overlap in both planes (so we get too many ‘true’ answers).
+        function d(box1, box2) {
+            if((box1.x < (box2.x + box2.width) &&
+                (box1.x + box1.width) > box2.x ) ||
+                (box1.y < (box2.y + box2.height) &&
+                (box1.y + box1.height) > box2.y )){
 
-        //         return true;
-        //     }
-        //     return false;
-        // }
+                return true;
+            }
+            return false;
+        }
 
         //correct answer but also any touching [edge/vertex] is considered an overlap – incorrect according to spec
         function e(box1, box2) {
@@ -80,24 +80,6 @@
                 (box1.x + box1.width) >= box2.x  &&
                 box1.y <= (box2.y + box2.height) &&
                 (box1.y + box1.height) >= box2.y ){
-
-                return true;
-            }
-            return false;
-        }
-
-        //correct answer but out by one errors?  Is there an ‘out-by-one’ error available without duplicating ‘e’?
-        function f(box1, box2) {
-            box2 = {
-                "x" : box2.x,
-                "y" : box2.y,
-                "width" : box1.width -1,
-                "height" : box1.height -1,
-            }
-            if(box1.x < (box2.x + box2.width) &&
-                (box1.x + box1.width) > box2.x  &&
-                box1.y < (box2.y + box2.height) &&
-                (box1.y + box1.height) > box2.y ){
 
                 return true;
             }
@@ -173,5 +155,15 @@
             return false;
         }
 
-    }
+        // some fancy math stuff that gives false positives with big widths and heights
+        function l(box1,box2) {
+            var diag1 = Math.pow(Math.pow(box1.width, 2) + Math.pow(box1.height,2), 0.5);
+            var diag2 = Math.pow(Math.pow(box2.width, 2) + Math.pow(box2.height,2), 0.5);
+            var center1 = {x: box1.x + box1.width/2, y: box1.y + box1.height/2};
+            var center2 = {x: box2.x + box2.width/2, y: box2.y + box2.height/2};
+            var centerdistance = Math.pow(Math.pow(center1.x - center2.x, 2) + Math.pow(center1.y - center2.y, 2), 0.5);
+             return centerdistance < diag1+diag2;
+        }
+
+        }
 })();
