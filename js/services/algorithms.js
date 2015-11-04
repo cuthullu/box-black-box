@@ -8,7 +8,7 @@
 
         algorithms.push({"name": "a", "run" : a });
         algorithms.push({"name": "b", "run" : b });
-        algorithms.push({"name": "d", "run" : d });
+        // algorithms.push({"name": "d", "run" : d });
         algorithms.push({"name": "e", "run" : e });
         algorithms.push({"name": "g", "run" : g });
         // algorithms.push({"name": "h", "run" : h });
