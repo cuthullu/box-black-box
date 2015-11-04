@@ -8,14 +8,10 @@
 
         algorithms.push({"name": "a", "run" : a });
         algorithms.push({"name": "b", "run" : b });
-        // algorithms.push({"name": "d", "run" : d });
-        algorithms.push({"name": "e", "run" : e });
-        algorithms.push({"name": "g", "run" : g });
-        // algorithms.push({"name": "h", "run" : h });
-        algorithms.push({"name": "i", "run" : i });
-        algorithms.push({"name": "j", "run" : j });
-        // algorithms.push({"name": "k*", "run" : k });
-        // algorithms.push({"name": "l*", "run" : l   });
+        algorithms.push({"name": "c", "run" : e });
+        algorithms.push({"name": "d", "run" : g });
+        algorithms.push({"name": "e", "run" : i });
+        algorithms.push({"name": "f", "run" : j });
 
         return service;
 
