@@ -14,7 +14,7 @@
         // algorithms.push({"name": "h", "run" : h });
         algorithms.push({"name": "i", "run" : i });
         algorithms.push({"name": "j", "run" : j });
-        algorithms.push({"name": "k*", "run" : k });
+        // algorithms.push({"name": "k*", "run" : k });
         // algorithms.push({"name": "l*", "run" : l   });
 
         return service;
