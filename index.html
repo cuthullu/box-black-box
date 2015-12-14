@@ -42,7 +42,7 @@
 
     <div class="brief">
         <p class="brief">
-            <span class="sub-heading"> Function Definition: </span>
+            <span class="sub-heading"> Function Requirements: </span>
             <br />
             <span class="discription"><em>true if and only if there is a non-zero area of overlap.</em></span>
         </p>
@@ -52,9 +52,7 @@
             <span class="sub-heading"> Goal : </span>
             <br />
             <span class="discription"><em>
-                You have {{vm.algorithms.length}} different implementations of a collison detection function.
-                Some better than others.
-                Figure which have bugs and why.
+                There are a number of implementations of a rectangle overlap detection function.  Write some test cases to discover which ones have bugs.
             </em></span>
         </p>
     </div>
@@ -65,8 +63,8 @@
     <span flex="20" layout="row" layout-align="center center">Rectangle 1</span>
     <span flex="20" layout="row" layout-align="center center">Rectangle 2</span>
     <span flex="5" layout="row" layout-align="center center">Expected</span>
-    <span flex="10" layout="row" layout-align="center center">Notes</span>
-    <div class="label-bar" flex="30" layout="row" layout-padding layout-align="center center">
+    <span flex="20" layout="row" layout-align="center center">Notes</span>
+    <div class="label-bar" flex="20" layout="row" layout-padding layout-align="center center">
         <div ng-repeat="alg in vm.algorithms" layout-align="center center" flex>
         {{alg.name}}
         </div>
@@ -149,14 +147,14 @@
                 </md-switch>
                 
             </div>
-            <div layout-padding flex="10">
+            <div layout-padding flex="20">
                 <md-input-container>
                     <label>optional</label>
                     <input ng-model="test.notes" type="text">
                 </md-input-container>
             </div>
             <!-- <span flex></span> -->
-            <div class="result" layout="column" flex="30" ng-class="{'invalid' : test.resultsInvalid}">
+            <div class="result" layout="column" flex="20" ng-class="{'invalid' : test.resultsInvalid}">
                 <div class="errors" layout-align="center center">
                     <p>{{test.errors}}</p>
                 </div>

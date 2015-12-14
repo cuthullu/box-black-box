@@ -147,6 +147,15 @@
             var box1 = new Box(0, 0, 2, 2);
             var box2 = new Box(0, 0, 1, 1);
             var test = new TestCase(vm.number, box1, box2);
+            test.notes = "square with smaller square in top right hand corner"
+            vm.number++;
+            vm.testCases.push(test);
+
+            var box1 = new Box(0, 0, 2, 2);
+            var box2 = new Box(6, 6, 2, 2);
+            var test = new TestCase(vm.number, box1, box2);
+            test.notes = "square with equal square to far bottom left not overlapping"
+            test.expected = false;
             vm.number++;
             vm.testCases.push(test);
             $timeout(function() {

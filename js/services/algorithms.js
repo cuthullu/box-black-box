@@ -8,10 +8,10 @@
 
         algorithms.push({"name": "a", "run" : a });
         algorithms.push({"name": "b", "run" : b });
-        algorithms.push({"name": "c", "run" : e });
-        algorithms.push({"name": "d", "run" : g });
-        algorithms.push({"name": "e", "run" : i });
-        algorithms.push({"name": "f", "run" : j });
+        algorithms.push({"name": "c", "run" : c });
+        algorithms.push({"name": "d", "run" : d });
+        algorithms.push({"name": "e", "run" : e });
+        algorithms.push({"name": "f", "run" : f });
 
         return service;
 
@@ -58,20 +58,8 @@
             return false;
         }
 
-        //true unless rectangles fail to overlap in both planes (so we get too many ‘true’ answers).
-        function d(box1, box2) {
-            if((box1.x < (box2.x + box2.width) &&
-                (box1.x + box1.width) > box2.x ) ||
-                (box1.y < (box2.y + box2.height) &&
-                (box1.y + box1.height) > box2.y )){
-
-                return true;
-            }
-            return false;
-        }
-
         //correct answer but also any touching [edge/vertex] is considered an overlap – incorrect according to spec
-        function e(box1, box2) {
+        function c(box1, box2) {
             if(box1.x <= (box2.x + box2.width) &&
                 (box1.x + box1.width) >= box2.x  &&
                 box1.y <= (box2.y + box2.height) &&
@@ -85,7 +73,7 @@
 
         //any vertex inside the area of the opposite rectangle is an overlap, and nothing else is
         //only plus sign and identical rectangles fail
-        function g(box1, box2) {
+        function d(box1, box2) {
             return doBothWays(box1, box2, function(box1, box2) { 
                 if((box1.x > box2.x && box1.x < (box2.x + box2.width)) ||
                     (box1.y > box2.y && box1.y < (box2.y + box2.height)) ||
@@ -98,20 +86,8 @@
             });
         }
 
-        // any vertex of B inside rectangle A
-        //plus sign, identical rectangles and B bigger than A fail
-        function h(box2, box1) {
-            if((box1.x > box2.x && box1.x < (box2.x + box2.width)) ||
-                    (box1.y > box2.y && box1.y < (box2.y + box2.height)) ||
-                    ((box1.x + box1.width) > box2.x && (box1.x + box1.width) < (box2.x + box2.width)) ||
-                    ((box1.y + box1.height) > box2.y && (box1.y + box1.height)< (box2.y + box2.height))) {
-                    return true;
-                }
-                return false;
-        }
-
         //My Way
-        function i(box1, box2) {
+        function e(box1, box2) {
             if(box1.x < (box2.x + box2.width) &&
                 (box1.x + box1.width) > box2.x  &&
                 box1.y < (box2.y + box2.height) &&
@@ -123,7 +99,7 @@
         }
 
         //The highway 
-        function j(box1, box2) {
+        function f(box1, box2) {
             return doBothWays(box1, box2, function(box1, box2) {
                 if(((box1.y >= box2.y && box1.x >= box2.x) &&
                     (box1.y < (box2.y + box2.height) && box1.x < (box2.x + box2.width) )) ||
@@ -137,28 +113,6 @@
                 }
                 return false;
             })
-        }
-
-        //Mixed up x/y width/height
-        function k(box1, box2) {
-            if(box1.x < (box2.x + box2.height) &&
-                (box1.x + box1.height) > box2.x  &&
-                box1.y < (box2.y + box2.width) &&
-                (box1.y + box1.width) > box2.y ){
-
-                return true;
-            }
-            return false;
-        }
-
-        // some fancy math stuff that gives false positives with big widths and heights
-        function l(box1,box2) {
-            var diag1 = Math.pow(Math.pow(box1.width, 2) + Math.pow(box1.height,2), 0.5);
-            var diag2 = Math.pow(Math.pow(box2.width, 2) + Math.pow(box2.height,2), 0.5);
-            var center1 = {x: box1.x + box1.width/2, y: box1.y + box1.height/2};
-            var center2 = {x: box2.x + box2.width/2, y: box2.y + box2.height/2};
-            var centerdistance = Math.pow(Math.pow(center1.x - center2.x, 2) + Math.pow(center1.y - center2.y, 2), 0.5);
-             return centerdistance < diag1+diag2;
         }
 
         }
