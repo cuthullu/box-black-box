@@ -151,13 +151,6 @@
             vm.number++;
             vm.testCases.push(test);
 
-            var box1 = new Box(0, 0, 2, 2);
-            var box2 = new Box(6, 6, 2, 2);
-            var test = new TestCase(vm.number, box1, box2);
-            test.notes = "square with equal square to far bottom left not overlapping"
-            test.expected = false;
-            vm.number++;
-            vm.testCases.push(test);
             $timeout(function() {
                 vm.scrolling = isOverflowed();    
             });
@@ -165,12 +158,22 @@
             focus("xcoord" +(vm.number - 1));
         }
 
+        function secondTest() {
+            var box1 = new Box(0, 0, 2, 2);
+            var box2 = new Box(6, 6, 2, 2);
+            var test = new TestCase(vm.number, box1, box2);
+            test.notes = "square with equal square to far bottom left not overlapping"
+            test.expected = false;
+            vm.number++;
+            vm.testCases.push(test);
+        }
+
         function isOverflowed(){
             var element = document.getElementById("this-can-scroll");
             return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
         }
         newTest();
-
+        secondTest();
         /*var box1 = new Box(0,0,4,4)
         var box2 = new Box(1,1,4,4)
         vm.testCases.push(new TestCase(vm.number,box1,box2))
