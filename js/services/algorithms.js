@@ -74,7 +74,7 @@
         //any vertex inside the area of the opposite rectangle is an overlap, and nothing else is
         //only plus sign and identical rectangles fail
         function d(box1, box2) {
-            return doBothWays(box1, box2, function(box1, box2) { 
+            var ans =  doBothWays(box1, box2, function(box1, box2) { 
                 if((box1.x > box2.x && box1.x < (box2.x + box2.width)) ||
                     (box1.y > box2.y && box1.y < (box2.y + box2.height)) ||
                     ((box1.x + box1.width) > box2.x && (box1.x + box1.width) < (box2.x + box2.width)) ||
@@ -84,6 +84,7 @@
                 return false;
 
             });
+            return ans && a(box1, box2);
         }
 
         //My Way
