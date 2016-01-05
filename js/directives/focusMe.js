@@ -1,5 +1,5 @@
 (function () {
-	angular.module("BoxBlackBox").factory('focus', function($timeout, $window) {
+	angular.module("BoxBlackBox").factory('focus', ['$timeout', '$window', function($timeout, $window) {
     return function(id) {
       // timeout makes sure that it is invoked after any other event has been triggered.
       // e.g. click events that need to run before the focus or
@@ -11,8 +11,8 @@
           element.focus();
       });
     };
-  });
-  angular.module("BoxBlackBox").directive('eventFocus', function(focus) {
+  }]);
+  angular.module("BoxBlackBox").directive('eventFocus',['focus', function(focus) {
     return function(scope, elem, attr) {
       elem.on(attr.eventFocus, function() {
         focus(attr.eventFocusId);
@@ -24,5 +24,5 @@
         elem.off(attr.eventFocus);
       });
     };
-  });
+  }]);
 })();
