@@ -8,6 +8,7 @@
         this.results = [];
         this.expected = true;
         this.resultsInvalid = false;
+        this.notes = "";
         var self = this;
 
         this.isValid = function() {
@@ -31,6 +32,16 @@
             testCase.expected = self.expected;
             console.log(testCase);
             return testCase;
+        }
+
+        this.toJSON = function() {
+            return {
+                number: this.number,
+                box1: box1.toJSON(),
+                box2: box2.toJSON(),
+                expected : this.expected,
+                notes: this.notes
+            }
         }
     }
 
@@ -68,6 +79,15 @@
                 self.history = self.back.history;
             }
         }
+
+        this.toJSON = function() {
+            return {
+                x: this.x,
+                y: this.y,
+                width: this.width,
+                height: this.height
+            }
+        }
     }
 
     function BoxTestController(algorithmService, focus, $timeout) {
@@ -77,6 +97,12 @@
         vm.scrolling = isOverflowed();
         vm.number = 0;
         vm.sorting = true;
+
+        vm.saveTests = function() {
+            var s = JSON.stringify(vm.testCases);
+            var b = new Blob([s], {type: "text/json;charset=utf-8"});
+            saveAs(b, "tests.json")
+        }
 
         vm.runTests = function() {
             vm.testCases.forEach(runTestSuit);
@@ -143,11 +169,12 @@
             }
         }
 
-        function newTest() {
+        function newTest(json) {
             var box1 = new Box(0, 0, 2, 2);
             var box2 = new Box(0, 0, 1, 1);
             var test = new TestCase(vm.number, box1, box2);
             test.notes = "square with smaller square in top right hand corner"
+            if(json != undefined) {test.parseJSON(json)};
             vm.number++;
             vm.testCases.push(test);
 
