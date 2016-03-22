@@ -43,6 +43,14 @@
                 notes: this.notes
             }
         }
+
+        this.parseJSON = function(json) {
+            this.expected = json.expected;
+            this.number = json.number;
+            this.box1.parseJSON(json.box1);
+            this.box2.parseJSON(json.box2);
+            this.notes = json.notes;
+        }
     }
 
     function Box(x, y, width, height) {
@@ -88,6 +96,13 @@
                 height: this.height
             }
         }
+
+        this.parseJSON = function(json) {
+            this.x = json.x;
+            this.y = json.y;
+            this.width = json.width;
+            this.height = json.height;
+        }
     }
 
     function BoxTestController(algorithmService, focus, $timeout) {
@@ -98,10 +113,23 @@
         vm.number = 0;
         vm.sorting = true;
 
+        vm.clickById = function(id) {
+            var target = document.getElementById(id);
+            target.click();
+        }
+
         vm.saveTests = function() {
             var s = JSON.stringify(vm.testCases);
             var b = new Blob([s], {type: "text/json;charset=utf-8"});
-            saveAs(b, "tests.json")
+            saveAs(b)
+        }
+
+        vm.import = function(content) {
+            var json = JSON.parse(content);
+            vm.testCases = [];
+            json.forEach(function(tcJson) {
+                newTest(tcJson);
+            })
         }
 
         vm.runTests = function() {

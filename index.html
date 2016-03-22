@@ -29,7 +29,6 @@
             <i class="fa fa-play"></i>
             Run all test cases
         </md-button>
-       
     </div>
     <span flex></span>
     <div class="brief">
@@ -55,6 +54,17 @@
                 There are a number of implementations of a rectangle overlap detection function.  Write some test cases to discover which ones have bugs.
             </em></span>
         </p>
+    </div>
+    <div layout="column" layout-padding layout-align="center center">
+         <md-button class="md-fab md-raised  md-mini" ng-click="vm.clickById('fileImport')">
+            <i class="fa fa-upload"></i>
+            <md-tooltip>Import Tests</md-tooltip>
+        </md-button>
+        <input ng-model="vm.file" id="fileImport" file-change="vm.import($fileContent)" style="display : none" type="file">
+        <md-button class="md-fab md-raised  md-mini" ng-click="vm.saveTests()">
+            <i class="fa fa-download"></i>
+            <md-tooltip>Export Tests</md-tooltip>
+        </md-button>
     </div>
 
 </md-toolbar>
@@ -188,8 +198,8 @@
 
 <script src="dest/black-box.min.js"></script>
 
-<!-- 
-<script src="js/vendor/jquery.min.js"></script>
+
+<!-- <script src="js/vendor/jquery.min.js"></script>
 <script src="js/vendor/jquery-ui.min.js"></script>
 
 
@@ -201,6 +211,7 @@
 
 
 <script src="js/vendor/sortable.js"></script>
+<script src="js/vendor/fileSaver.js"></script>
 
 
 <script src="js/app.js"></script>
@@ -213,6 +224,7 @@
 
 
 <script src="js/directives/focusMe.js"></script>
+<script src="js/directives/fileChange.js"></script>
  -->
 
 </md-content>
