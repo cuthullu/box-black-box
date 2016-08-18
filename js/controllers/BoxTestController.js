@@ -121,7 +121,7 @@
         vm.saveTests = function() {
             var s = JSON.stringify(vm.testCases);
             var b = new Blob([s], {type: "text/json;charset=utf-8"});
-            saveAs(b)
+            saveAs(b, "tests.json");
         }
 
         vm.import = function(content) {

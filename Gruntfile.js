@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             'node_modules/angular-material/angular-material.min.js',
             'node_modules/angular-messages/angular-messages.min.js',
             'js/vendor/jquery-ui.min.js','js/app.js','js/services/algorithms.js', 'js/controllers/BoxTestController.js','js/directives/focusMe.js',
-            'js/vendor/sortable.js']
+            'js/directives/fileChange.js', 'js/vendor/sortable.js', 'js/vendor/fileSaver.js']
           }
         }
       }
